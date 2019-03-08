@@ -1,7 +1,6 @@
 var burgers=require("../model/model")
 var express = require("express");
 var router=express.Router();
-
 router.get("/",function(req,res){
     burgers.viewAll(function(data){
         res.render("index",{burgers:data})

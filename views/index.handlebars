@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-3">
+        <div id="no" class="list-group non">
+            <ul>
+              {{#each burgers}}
+              {{#if this.ate}}
+              <li class="list-group-item list-group-item-action">{{this.burger_name}}
+                <button class="btn btn-primary butt" data-state="false" data-id="{{this.id}}">Eat</button>
+              </li>             
+              {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+    </div>
+
+    <div class="col-md-6">
+      <br>
+        <div style="background-color:rgb(251, 209, 3); border:0px" class="card text-center">
+          <div class="card-body">
+              <h5 class="card-title">Create Your Burger</h5>
+              <img id="mainb" src="../public/mainB.jpg">
+              <form id="sub" action="/api/burger" method="POST">
+                <textarea type="text" rows="2" name="burger"></textarea>
+                <br><br>
+                <input  class="btn btn-primary" type="submit" value="submit">
+              </form> 
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div id="yes" class="list-group non">
+            <ul>
+              {{#each burgers}}
+              {{#unless this.ate}}
+              <li class="list-group-item list-group-item-action">{{this.burger_name}}
+                <button class="btn btn-primary butt" data-state="true" data-id="{{this.id}}">Eat</button>
+              </li>              
+              {{/unless}}
+              {{/each}}              
+            </ul>
+        </div>
+    </div>
+
+  </div>
+</div>

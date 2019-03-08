@@ -6,7 +6,29 @@
     <title>Burgers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/style.css">
+  {{!-- <link rel="stylesheet" type="text/css" href="/style.css"> --}}
+  <style>
+    #mainb{
+    width:14rem;
+    margin:2%;
+}
+.non{
+    margin-top:35%;
+}
+.butt{
+    float:right
+}
+.list-group-item{
+    border:2px solid black;
+    margin:1%;
+}
+#center{
+  margin-left:20%;
+}
+.clearfix {
+  overflow: auto;
+}
+  </style>
 </head>
 <body style="background-color:rgb(251, 209, 3)">
 {{{body}}}
@@ -17,6 +39,12 @@
   $(".butt").on("click",function(){
     var id=$(this).data("id")
     var ate=$(this).attr("data-state")
+    if($(this).attr("data-state")==="true"){
+      ate=true
+    }
+    else if($(this).attr("data-state")==="false"){
+      ate=false;
+    }
     var data={
       id:id,
       ate:ate
@@ -26,10 +54,32 @@
       method:"put",
       data:data
     }).then(function(req,res){
-      console.log(res)
       console.log("updated")
+      console.log(res)
+      location.assign("/")
+    }).catch(function(err){
+      if(err)throw err
     })
   })
+  $("#sub").on("click",function(){
+    var name=$("#burger").val().trim()
+    if(name!==""||name!==" "){
+    var data={
+      name:name
+    }
+    $.ajax("/api/burger",{
+      method:"POST",
+      data:data
+    }).then(function(req,res){
+      console.log("added "+res)
+      location.assign("/")
+    })
+    }
+    else{
+      alert("please fill out burger name before submiting")
+    }
+  })
+  
 </script>
 </body>
 </html>

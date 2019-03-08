@@ -7,19 +7,20 @@ router.get("/",function(req,res){
         res.render("index",{burgers:data})
     })
 })
-router.post("/add",function(req,res){
-    var name=req.params.name;
+router.post("/api/burger",function(req,res){
+    var name=req.body.name;
     burgers.createBurger(name,function(data){
-        res.render("index",{burgers:data})
+        console.log("added")
+        res.json(data)
     })
 })
 router.put("/update/:id",function(req,res){
-    var id= parseInt(req.params.id);
-    var ate=Boolean(req.body.ate);
+    var id= req.params.id;
+    var ate=parseInt(req.body.ate);
     console.log("updating.." + id+ate)
     burgers.updateOne(ate,id,function(data){
         console.log(data);
-        burgers.viewAll(function(data){})
+        res.json(data)
     })
 })
 module.exports=router;

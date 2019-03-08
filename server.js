@@ -5,6 +5,7 @@ var app=express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.engine("handlebars", handle({ defaultLayout: "main" }));
+app.use(express.static("public"));
 app.set("view engine", "handlebars");
 
 var router=require("./controller/controller")

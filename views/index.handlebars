@@ -4,11 +4,13 @@
 
     <div class="col-md-3">
         <div id="no" class="list-group non">
+          <h1>Ready to eat</h1>
+          <hr>
             <ul>
               {{#each burgers}}
               {{#if this.ate}}
-              <li class="list-group-item list-group-item-action">{{this.burger_name}}
-                <button class="btn btn-primary butt" data-state="false" data-id="{{this.id}}">Eat</button>
+              <li class="list-group-item list-group-item-action clearfix">{{this.burger_name}}
+                <button class="btn btn-primary butt" data-state="0" data-id="{{this.id}}">Eat</button>
               </li>             
               {{/if}}
               {{/each}}
@@ -18,26 +20,27 @@
 
     <div class="col-md-6">
       <br>
-        <div style="background-color:rgb(251, 209, 3); border:0px" class="card text-center">
+      <div class="card" style="width: 18rem;background-color:rgb(251, 209, 3); border:0px; margin-left:20%">
+        <img src="/assets/img/mainB.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-              <h5 class="card-title">Create Your Burger</h5>
-              <img id="mainb" src="../public/mainB.jpg">
-              <form id="sub" action="/api/burger" method="POST">
-                <textarea type="text" rows="2" name="burger"></textarea>
-                <br><br>
-                <input  class="btn btn-primary" type="submit" value="submit">
-              </form> 
+            <div id="center">
+            <h5 class="card-title">Create Burger</h5>
+            <textarea type="text" rows="2" id="burger"></textarea>
+            <br><br>
+            <button class="btn btn-primary" id="sub">Submit</button>
+            </div>
           </div>
-        </div>
+      </div>
     </div>
 
     <div class="col-md-3">
         <div id="yes" class="list-group non">
+          <h1>Recently ate</h1><hr>
             <ul>
               {{#each burgers}}
               {{#unless this.ate}}
-              <li class="list-group-item list-group-item-action">{{this.burger_name}}
-                <button class="btn btn-primary butt" data-state="true" data-id="{{this.id}}">Eat</button>
+              <li class="list-group-item list-group-item-action clearfix">{{this.burger_name}}
+                <button class="btn btn-primary butt" data-state="1" data-id="{{this.id}}">Cook</button>
               </li>              
               {{/unless}}
               {{/each}}              

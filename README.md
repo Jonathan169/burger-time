@@ -8,4 +8,4 @@ by Handlebars, not sure how I feel about it
 * Just open in your browser Duh
 
 
-![pic of app](https://github.com/Jonathan169/burger-time/blob/master/public/assets/img/app.png?raw=true)
+[![pic of app](https://github.com/Jonathan169/burger-time/blob/master/public/assets/img/app.png?raw=true)](https://frozen-island-85774.herokuapp.com/)

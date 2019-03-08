@@ -5,7 +5,7 @@ var router=express.Router();
 router.get("/",function(req,res){
     burgers.viewAll(function(data){
         res.render("index",{burgers:data})
-    })      
+    })
 })
 router.post("/add",function(req,res){
     var name=req.params.name;
@@ -14,12 +14,12 @@ router.post("/add",function(req,res){
     })
 })
 router.put("/update/:id",function(req,res){
-    var id= req.params.id;
+    var id= parseInt(req.params.id);
     var ate=Boolean(req.body.ate);
-
     console.log("updating.." + id+ate)
     burgers.updateOne(ate,id,function(data){
-        res.render("index",{burgers:data})
+        console.log(data);
+        burgers.viewAll(function(data){})
     })
 })
 module.exports=router;
